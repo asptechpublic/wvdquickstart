@@ -56,10 +56,24 @@
             "metadata": {
                 "description": "Specify which identity approach you would like to use for your WVD deployment. Pick either AD (Active Directory Domain Services) or Azure AD DS (Azure Active Directory Domain Services)"
             },
+            "defaultValue": "AD",
             "allowedValues": [
                 "AD",
                 "Azure AD DS"
             ]
+        },
+        "customerID": {
+            "type": "string",
+            "metadata": {
+                "description": "Customer ID - Use CRM Account Number but use lowercase, e.g aspire-telecoms"
+            }
+        },
+        "contractID": {
+            "type": "string",
+        
+            "metadata": {
+                "description": "Contract ID - Use CRM Contract Number e.g 2016/24555"
+            }
         },
         "optionalNotificationEmail": {
             "type": "string",
@@ -68,6 +82,57 @@
             },
             "defaultValue": ""
         },
+        "hostPoolname": {
+            "type": "string",
+            "metadata": { 
+                "description": "Name for the WVD Hostpool"
+            },
+            "defaultValue": "[concat(parameters('customerID'), '-WVD') ]"
+        },
+        "vmNameprefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Name prefix for the session hosts"
+            },
+            "defaultValue": "[concat(parameters('customerID'), '-WVD') ]"
+        },
+        "vmSize": {
+            "type": "string",
+            "metadata": {
+                "description": "Size of the WVD session hosts"
+            },
+            "defaultValue": "Standard_E8as_v4",
+            "allowedValues": ["Standard_E8as_v4", "Standard_E4as_v4", "Standard_E16as_v4" ]
+        },
+        "vmNumberofinstances": {
+            "type": "int",
+            "metadata": {
+                "description": "Number of session hosts to be deployed"
+            },
+            "defaultValue": 1
+        },
+        "appGroupname": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the remote app group"
+            },
+            "defaultValue": "[concat(parameters('customerID'), '-RAG')]"
+        },
+        "deskGroupname": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the desktop app group"
+            },
+            "defaultValue": "[concat(parameters('customerID'), '-DAG')]"
+        },
+        "workSpacename": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the workspace"
+            },
+            "defaultValue": "[concat(parameters('customerID'), '-WS')]"
+        },
+
         "utcValue": {
             "type": "string",
             "metadata": {
@@ -77,7 +142,7 @@
         }
     },
     "variables": {
-        "_artifactsLocation": "https://raw.githubusercontent.com/stgeorgi/wvdquickstart/master",
+        "_artifactsLocation": "https://raw.githubusercontent.com/asptechcloud/wvdquickstart/master",
         "AdminPasswordSecret": "adminPassword",
         "existingDomainUsername": "[first(split(parameters('DomainJoinAccountUPN'), '@'))]",
         "existingDomainName": "[split(parameters('DomainJoinAccountUPN'), '@')[1]]",
@@ -96,6 +161,36 @@
         "devOpsProjectName": "[concat('WVDQuickStartProj', skip(parameters('utcValue'), 9))]",
         "targetGroup": "WVDTestUsers",
         "automationVariables": [
+            
+
+            {
+                "name": "appGroupname",
+                "value": "[concat('\"',parameters('appGroupname'),'\"')]"
+            },
+            {
+                "name": "deskGroupname",
+                "value": "[concat('\"',parameters('deskGroupname'),'\"')]"
+            },
+            {
+                "name": "workSpacename",
+                "value": "[concat('\"',parameters('workSpacename'),'\"')]"
+            },
+            {
+                "name": "vmNumberofinstances",
+                "value": "[concat('\"',parameters('vmNumberofinstances'),'\"')]"
+            },
+            {
+                "name": "vmSize",
+                "value": "[concat('\"',parameters('vmSize'),'\"')]"
+            },
+            {
+                "name": "hostPoolname",
+                "value": "[concat('\"',parameters('hostPoolname'),'\"')]"
+            },
+            {
+                "name": "vmNameprefix",
+                "value": "[concat('\"',parameters('vmNameprefix'),'\"')]"
+            },
             {
                 "name": "subscriptionid",
                 "value": "[concat('\"',subscription().subscriptionId,'\"')]"

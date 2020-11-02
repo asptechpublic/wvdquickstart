@@ -148,6 +148,7 @@
         "existingDomainName": "[split(parameters('DomainJoinAccountUPN'), '@')[1]]",
         "identityName": "WVDServicePrincipal",
         "location": "[resourcegroup().location]",
+        "location2": "eastus",
         "rgName": "[resourcegroup().name]",
         "keyvaultName": "[concat('keyvault', parameters('utcValue'))]",
         "assetsName": "[concat('assets', toLower(skip(parameters('utcValue'), 4)))]",
@@ -291,7 +292,7 @@
             "type": "Microsoft.Automation/automationAccounts",
             "apiVersion": "2015-01-01-preview",
             "name": "[variables('autoAccountName')]",
-            "location": "[resourceGroup().location]",
+            "location": "[variables('location2')]",
             "dependsOn": [
             ],
             "tags": {},
@@ -333,7 +334,7 @@
                     "type": "runbooks",
                     "apiVersion": "2015-01-01-preview",
                     "name": "inputValidationRunbook",
-                    "location": "[resourceGroup().location]",
+                    "location": "[variables('location2')]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'), '/credentials/AzureCredentials')]",
@@ -354,7 +355,7 @@
                     "type": "jobs",
                     "apiVersion": "2015-01-01-preview",
                     "name": "[variables('jobGuid0')]",
-                    "location": "[resourceGroup().location]",
+                    "location": "[variables('location2')]",
                     "dependsOn": [
                         "[concat('Microsoft.ManagedIdentity/userAssignedIdentities/', variables('identityName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
@@ -373,7 +374,7 @@
                     "type": "runbooks",
                     "apiVersion": "2015-01-01-preview",
                     "name": "ServicePrincipalRunbook",
-                    "location": "[resourceGroup().location]",
+                    "location": "[variables('location2')]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'), '/credentials/AzureCredentials')]",
@@ -394,7 +395,7 @@
                     "type": "jobs",
                     "apiVersion": "2015-01-01-preview",
                     "name": "[variables('jobGuid')]",
-                    "location": "[resourceGroup().location]",
+                    "location": "[variables('location2')]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'), '/runbooks/ServicePrincipalRunbook')]",
@@ -414,7 +415,7 @@
                     "type": "runbooks",
                     "apiVersion": "2015-01-01-preview",
                     "name": "devOpsSetupRunbook",
-                    "location": "[resourceGroup().location]",
+                    "location": "[variables('location2')]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('microsoft.visualstudio/account/', variables('devOpsName'))]"
@@ -434,7 +435,7 @@
                     "type": "jobs",
                     "apiVersion": "2015-01-01-preview",
                     "name": "[variables('jobGuid2')]",
-                    "location": "[resourceGroup().location]",
+                    "location": "[variables('location2')]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'), '/jobs/',variables('jobGuid'))]",

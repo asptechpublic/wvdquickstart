@@ -27,7 +27,7 @@
 
     # Host pool related #
     # ================== #
-    hostpoolName                          = "[hostPoolname]"                    # Name of the WVD host pool
+    hostpoolName                          = "[hostpoolName]"                    # Name of the WVD host pool
     hostpoolType                          = "Pooled"                            # Type of host pool, can be "Personal" or "Pooled" (default)
     maxSessionLimit                       = 16                                  # default
     loadBalancerType                      = "BreadthFirst"                      # Load-balancing algorithm

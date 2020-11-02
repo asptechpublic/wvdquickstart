@@ -13,9 +13,19 @@ This script is ran by the devOpsSetupRunbook and it does the following, in the o
  * Create a DevOps variable group that holds the credential secrets for the pipeline, and give the pipeline access to these secrets
  * Set the optional notification email address in DevOps 
 
+
 #>
 
 #Initializing variables from automation account
+
+$hostpoolName = Get-AutomationVariable -name 'hostpoolName'
+$appGroupname = Get-AutomationVariable -name 'appGroupname'
+$deskGroupname = Get-AutomationVariable -name 'deskGroupname'
+$workSpacename = Get-AutomationVariable -name 'workSpacename'
+$vmNumberofinstances = Get-AutomationVariable -name 'vmNumberofinstances'
+$vmSize = Get-AutomationVariable -name 'vmSize'
+$vmNameprefix = Get-AutomationVariable -name 'vmNameprefix'
+
 $SubscriptionId = Get-AutomationVariable -Name 'subscriptionid'
 $ResourceGroupName = Get-AutomationVariable -Name 'ResourceGroupName'
 $fileURI = Get-AutomationVariable -Name 'fileURI'
@@ -324,6 +334,13 @@ $parameters = $parameters.Replace("[principalIds]", $principalIds)
 $parameters = $parameters.Replace("[targetGroup]", $targetGroup)
 $parameters = $parameters.Replace("[identityApproach]", $identityApproach)
 $parameters = $parameters.Replace('"', "'")
+$parameters = $parameters.Replace("[hostpoolName]", $hostpoolName)
+$parameters = $parameters.Replace("[appGroupname]", $appGroupname)
+$parameters = $parameters.Replace("[deskGroupname]", $deskGroupname)
+$parameters = $parameters.Replace("[workSpacename]", $workSpacename)
+$parameters = $parameters.Replace("[vmNumberofinstances]", $vmNumberofinstances)
+$parameters = $parameters.Replace("[vmSize]", $vmSize)
+$parameters = $parameters.Replace("[vmNameprefix]", $vmNameprefix)
 write-output $parameters
 
 $body = @"

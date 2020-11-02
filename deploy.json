@@ -87,7 +87,7 @@
             "metadata": { 
                 "description": "Name for the WVD Hostpool"
             },
-            "defaultValue": "[concat(parameters('customerID'), '-WVD') ]"
+            "defaultValue": "[concat(parameters('customerID'), '-Pool') ]"
         },
         "vmNameprefix": {
             "type": "string",
@@ -163,6 +163,11 @@
         "targetGroup": "WVDTestUsers",
         "automationVariables": [
             
+
+              {
+                "name": "location2",
+                "value": "[concat('\"',variables('location2'),'\"')]"
+            },
 
             {
                 "name": "appGroupname",

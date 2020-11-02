@@ -19,13 +19,13 @@ This script is ran by the devOpsSetupRunbook and it does the following, in the o
 #Initializing variables from automation account
 
 $hostpoolName = Get-AutomationVariable -name 'hostpoolName'
+$location2 = Get-AutomationVariable -name 'location2'
 $appGroupname = Get-AutomationVariable -name 'appGroupname'
 $deskGroupname = Get-AutomationVariable -name 'deskGroupname'
 $workSpacename = Get-AutomationVariable -name 'workSpacename'
 $vmNumberofinstances = Get-AutomationVariable -name 'vmNumberofinstances'
 $vmSize = Get-AutomationVariable -name 'vmSize'
 $vmNameprefix = Get-AutomationVariable -name 'vmNameprefix'
-
 $SubscriptionId = Get-AutomationVariable -Name 'subscriptionid'
 $ResourceGroupName = Get-AutomationVariable -Name 'ResourceGroupName'
 $fileURI = Get-AutomationVariable -Name 'fileURI'
@@ -298,6 +298,7 @@ $downloadUrl = $($fileUri + "/QS-WVD/variables.template.yml")
 $content = (New-Object System.Net.WebClient).DownloadString($downloadUrl)
 
 $content = $content.Replace("[location]", $location)
+$content = $content.Replace("[location2]", $location2)
 $content = $content.Replace("[adminUsername]", $adminUsername)
 $content = $content.Replace("[domainName]", $domainName)
 $content = $content.Replace("[keyVaultName]", $keyvaultName)
@@ -341,7 +342,6 @@ $parameters = $parameters.Replace("[vmNumberofinstances]", $vmNumberofinstances)
 $parameters = $parameters.Replace("[vmSize]", $vmSize)
 $parameters = $parameters.Replace("[vmNameprefix]", $vmNameprefix)
 $parameters = $parameters.Replace('"', "'")
-
 write-output $parameters
 
 $body = @"

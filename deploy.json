@@ -561,7 +561,7 @@
             "type": "Microsoft.Resources/deploymentScripts",
             "apiVersion": "2019-10-01-preview",
             "name": "createDevopsPipeline",
-            "location": "[variables('location')]",
+            "location": "[variables('location2')]",
             "dependsOn": [
                 "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'), '/jobs/', variables('jobGuid2'))]"
             ],

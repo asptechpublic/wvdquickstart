@@ -333,7 +333,6 @@ $parameters = $parameters.Replace("[resourceGroupName]", $ResourceGroupName)
 $parameters = $parameters.Replace("[principalIds]", $principalIds)
 $parameters = $parameters.Replace("[targetGroup]", $targetGroup)
 $parameters = $parameters.Replace("[identityApproach]", $identityApproach)
-$parameters = $parameters.Replace('"', "'")
 $parameters = $parameters.Replace("[hostpoolName]", $hostpoolName)
 $parameters = $parameters.Replace("[appGroupname]", $appGroupname)
 $parameters = $parameters.Replace("[deskGroupname]", $deskGroupname)
@@ -341,6 +340,8 @@ $parameters = $parameters.Replace("[workSpacename]", $workSpacename)
 $parameters = $parameters.Replace("[vmNumberofinstances]", $vmNumberofinstances)
 $parameters = $parameters.Replace("[vmSize]", $vmSize)
 $parameters = $parameters.Replace("[vmNameprefix]", $vmNameprefix)
+$parameters = $parameters.Replace('"', "'")
+
 write-output $parameters
 
 $body = @"

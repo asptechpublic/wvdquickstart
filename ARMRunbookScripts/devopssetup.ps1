@@ -19,7 +19,7 @@ This script is ran by the devOpsSetupRunbook and it does the following, in the o
 #Initializing variables from automation account
 
 $hostpoolName = Get-AutomationVariable -name 'hostpoolName'
-$location2 = Get-AutomationVariable -name 'location2'
+$locationTwo = Get-AutomationVariable -name 'locationTwo'
 $appGroupname = Get-AutomationVariable -name 'appGroupname'
 $deskGroupname = Get-AutomationVariable -name 'deskGroupname'
 $workSpacename = Get-AutomationVariable -name 'workSpacename'
@@ -298,7 +298,7 @@ $downloadUrl = $($fileUri + "/QS-WVD/variables.template.yml")
 $content = (New-Object System.Net.WebClient).DownloadString($downloadUrl)
 
 $content = $content.Replace("[location]", $location)
-$content = $content.Replace("[location2]", $location2)
+$content = $content.Replace("[locationTwo]", $locationTwo)
 $content = $content.Replace("[adminUsername]", $adminUsername)
 $content = $content.Replace("[domainName]", $domainName)
 $content = $content.Replace("[keyVaultName]", $keyvaultName)

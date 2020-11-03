@@ -165,7 +165,7 @@
             
 
               {
-                "name": "location2",
+                "name": "locationTwo",
                 "value": "[concat('\"',variables('locationTwo'),'\"')]"
             },
 

@@ -278,7 +278,7 @@
             }
         ]   
     },
-    "functions": [
+     "functions": [
     ],
     "resources": [
         {
@@ -292,7 +292,7 @@
             "type": "Microsoft.Automation/automationAccounts",
             "apiVersion": "2015-01-01-preview",
             "name": "[variables('autoAccountName')]",
-            "location": "[variables('location')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
             ],
             "tags": {},
@@ -306,7 +306,7 @@
                     "type": "credentials",
                     "apiVersion": "2015-01-01-preview",
                     "name": "AzureCredentials",
-                    "location": "[variables('location')]",
+                    "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]"
                     ],
@@ -320,7 +320,7 @@
                     "type": "credentials",
                     "apiVersion": "2015-01-01-preview",
                     "name": "domainJoinCredentials",
-                    "location": "[variables('location')]",
+                    "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]"
                     ],
@@ -334,7 +334,7 @@
                     "type": "runbooks",
                     "apiVersion": "2015-01-01-preview",
                     "name": "inputValidationRunbook",
-                    "location": "[variables('location')]",
+                    "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'), '/credentials/AzureCredentials')]",
@@ -355,7 +355,7 @@
                     "type": "jobs",
                     "apiVersion": "2015-01-01-preview",
                     "name": "[variables('jobGuid0')]",
-                    "location": "[variables('location')]",
+                    "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[concat('Microsoft.ManagedIdentity/userAssignedIdentities/', variables('identityName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
@@ -374,7 +374,7 @@
                     "type": "runbooks",
                     "apiVersion": "2015-01-01-preview",
                     "name": "ServicePrincipalRunbook",
-                    "location": "[variables('location')]",
+                    "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'), '/credentials/AzureCredentials')]",
@@ -395,7 +395,7 @@
                     "type": "jobs",
                     "apiVersion": "2015-01-01-preview",
                     "name": "[variables('jobGuid')]",
-                    "location": "[variables('location')]",
+                    "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'), '/runbooks/ServicePrincipalRunbook')]",
@@ -415,7 +415,7 @@
                     "type": "runbooks",
                     "apiVersion": "2015-01-01-preview",
                     "name": "devOpsSetupRunbook",
-                    "location": "[variables('location')]",
+                    "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('microsoft.visualstudio/account/', variables('devOpsName'))]"
@@ -435,7 +435,7 @@
                     "type": "jobs",
                     "apiVersion": "2015-01-01-preview",
                     "name": "[variables('jobGuid2')]",
-                    "location": "[variables('location')]",
+                    "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'))]",
                         "[concat('Microsoft.Automation/automationAccounts/', variables('autoAccountName'), '/jobs/',variables('jobGuid'))]",

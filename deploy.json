@@ -163,11 +163,7 @@
         "automationVariables": [
             
 
-              {
-                "name": "location",
-                "value": "[concat('\"',variables('location'),'\"')]"
-            },
-
+          
             {
                 "name": "appGroupname",
                 "value": "[concat('\"',parameters('appGroupname'),'\"')]"

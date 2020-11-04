@@ -18,13 +18,13 @@ This script is ran by the devOpsSetupRunbook and it does the following, in the o
 
 #Initializing variables from automation account
 
-$hostpoolName = Get-AutomationVariable -name 'hostpoolName'
-$appGroupname = Get-AutomationVariable -name 'appGroupname'
-$deskGroupname = Get-AutomationVariable -name 'deskGroupname'
-$workSpacename = Get-AutomationVariable -name 'workSpacename'
-$vmNumberofinstances = Get-AutomationVariable -name 'vmNumberofinstances'
-$vmSize = Get-AutomationVariable -name 'vmSize'
-$vmNameprefix = Get-AutomationVariable -name 'vmNameprefix'
+$hostpoolName = Get-AutomationVariable -Name 'hostpoolName'
+$appGroupname = Get-AutomationVariable -Name 'appGroupname'
+$deskGroupname = Get-AutomationVariable -Name 'deskGroupname'
+$workSpacename = Get-AutomationVariable -Name 'workSpacename'
+$vmNumberofinstances = Get-AutomationVariable -Name 'vmNumberofinstances'
+$vmSize = Get-AutomationVariable -Name 'vmSize'
+$vmNameprefix = Get-AutomationVariable -Name 'vmNameprefix'
 $SubscriptionId = Get-AutomationVariable -Name 'subscriptionid'
 $ResourceGroupName = Get-AutomationVariable -Name 'ResourceGroupName'
 $fileURI = Get-AutomationVariable -Name 'fileURI'

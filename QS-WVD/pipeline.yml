@@ -29,7 +29,6 @@ stages:
                   inline: |
                       Write-Verbose "Load function" -Verbose
                       . '$(Build.Repository.LocalPath)/QS-WVD/Scripts/New-PipelineParameterSetup.ps1'
-
                       New-PipelineParameterSetup -Verbose
                   errorActionPreference: stop
                   azurePowerShellVersion: LatestVersion
@@ -95,7 +94,6 @@ stages:
                   inline: |
                     Write-Verbose "Load function" -Verbose
                     . '$(Build.Repository.LocalPath)/$(orchestrationFunctionsPath)/Invoke-GeneralDeployment.ps1'
-
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/storageaccount.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
@@ -104,10 +102,8 @@ stages:
                       moduleVersion                 = "2020-06-02"
                       parameterFilePath             = $parameterFilePath
                     }
-
                     Write-Verbose "Invoke task with" -Verbose
                     $functionInput.Keys | ForEach-Object { Write-Verbose ("PARAMETER: `t'{0}' with value '{1}'" -f $_, $functionInput[$_]) -Verbose }
-
                     Invoke-GeneralDeployment @functionInput -Verbose
                   errorActionPreference: stop
                   azurePowerShellVersion: LatestVersion
@@ -121,16 +117,13 @@ stages:
                   inline: | 
                     Write-Verbose "Load function" -Verbose
                     . '$(Build.Repository.LocalPath)/$(parameterFolderPath)/Scripts/Invoke-StorageAccountPostDeployment.ps1'
-
                     $functionInput = @{
                       orchestrationFunctionsPath = Join-Path '$(Build.Repository.LocalPath)' '$(orchestrationFunctionsPath)'
                       wvdUploadsPath = Join-Path '$(Pipeline.Workspace)/parameters/s' '$(wvdUploadsPath)'          
                       storageAccountName         = "$(wvdAssetsStorage)"
                     }
-
                     Write-Verbose "Invoke task with" -Verbose
                     $functionInput.Keys | ForEach-Object { Write-Verbose ("PARAMETER: `t'{0}' with value '{1}'" -f $_, $functionInput[$_]) -Verbose }
-
                     Invoke-StorageAccountPostDeployment @functionInput -Verbose
                   errorActionPreference: stop
                   azurePowerShellVersion: LatestVersion
@@ -158,7 +151,6 @@ stages:
                   inline: |
                     Write-Verbose "Load function" -Verbose
                     . '$(Build.Repository.LocalPath)/$(orchestrationFunctionsPath)/Invoke-GeneralDeployment.ps1'
-
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvdprofiles-storageaccount-01.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
@@ -180,10 +172,8 @@ stages:
                         optionalParameters=$parameterObjects
                       }
                     }
-
                     Write-Verbose "Invoke task with $functionInput" -Verbose
                     $functionInput.Keys | ForEach-Object { Write-Verbose ("PARAMETER: `t'{0}' with value '{1}'" -f $_, $functionInput[$_]) -Verbose }
-
                     Invoke-GeneralDeployment @functionInput -Verbose
                   errorActionPreference: stop
                   azurePowerShellVersion: LatestVersion
@@ -211,7 +201,6 @@ stages:
                   inline: |
                     Write-Verbose "Load function" -Verbose
                     . '$(Build.Repository.LocalPath)/$(orchestrationFunctionsPath)/Invoke-GeneralDeployment.ps1'
-
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvdhostpool.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
@@ -220,10 +209,8 @@ stages:
                       moduleVersion                 = "0.0.1"
                       parameterFilePath             = $parameterFilePath
                     }
-
                     Write-Verbose "Invoke task with" -Verbose
                     $functionInput.Keys | ForEach-Object { Write-Verbose ("PARAMETER: `t'{0}' with value '{1}'" -f $_, $functionInput[$_]) -Verbose }
-
                     Invoke-GeneralDeployment @functionInput -Verbose
                   errorActionPreference: stop
                   azurePowerShellVersion: LatestVersion
@@ -252,7 +239,6 @@ stages:
                   inline: |
                     Write-Verbose "Load function" -Verbose
                     . '$(Build.Repository.LocalPath)/$(orchestrationFunctionsPath)/Invoke-GeneralDeployment.ps1'
-
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvddesktoppapplicationgroup.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
@@ -261,10 +247,8 @@ stages:
                       moduleVersion                 = "2020-06-02"
                       parameterFilePath             = $parameterFilePath
                     }
-
                     Write-Verbose "Invoke task with" -Verbose
                     $functionInput.Keys | ForEach-Object { Write-Verbose ("PARAMETER: `t'{0}' with value '{1}'" -f $_, $functionInput[$_]) -Verbose }
-
                     Invoke-GeneralDeployment @functionInput -Verbose
                   errorActionPreference: stop
                   azurePowerShellVersion: LatestVersion
@@ -301,7 +285,6 @@ stages:
                     Write-Verbose "Load function" -Verbose
                     . '$(Build.Repository.LocalPath)/$(orchestrationFunctionsPath)/Invoke-GeneralDeployment.ps1'
                     . '$(Build.Repository.LocalPath)/$(orchestrationFunctionsPath)/Add-CustomParameters.ps1'
-
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvdsessionhost.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
@@ -310,13 +293,10 @@ stages:
                       moduleVersion                 = "2020-06-02"
                       parameterFilePath             = $parameterFilePath
                     }
-
                     Write-Verbose "Invoke task with" -Verbose
                     $functionInput.Keys | ForEach-Object { Write-Verbose ("PARAMETER: `t'{0}' with value '{1}'" -f $_, $functionInput[$_]) -Verbose }
-
                     Write-Verbose "Fetch and populated pipeline outputs" -Verbose
                     $regInfo = Get-AzWvdRegistrationInfo -HostPoolName '$(hostpoolname)' -ResourceGroupName '$(resourceGroupName)'
-
                     $overwriteInputObject = @{
                       parameterFilePath = $parameterFilePath
                       valueMap         = @(
@@ -324,7 +304,6 @@ stages:
                       )
                     }
                     Add-CustomParameters @overwriteInputObject
-
                     $parameterObjects = $()
                     if (-not [String]::IsNullOrEmpty('$(customImageReferenceId)')) {
                       Write-Verbose "Using custom image ref ['$(customImageReferenceId)']" -Verbose
@@ -346,7 +325,6 @@ stages:
                         imageReference = $imageReference
                       }
                     }
-
                     $storageAccount = Get-AzResource -Name $(profilesStorageAccountName) -ResourceType 'Microsoft.Storage/storageAccounts'
                     $SASKey = (Get-AzStorageAccountKey -AccountName $storageAccount.Name -ResourceGroupName $storageAccount.ResourceGroupName)[0]                    
                     $windowsScriptExtensionCommandToExecute = 'powershell -ExecutionPolicy Unrestricted -Command "& .\scriptExtensionMasterInstaller.ps1 -AzureAdminUpn $(azureAdminUpn) -AzureAdminPassword $(azureAdminPassword) -domainJoinPassword $(domainJoinPassword) -Dynparameters @{storageaccountkey=\"'+ $($SASKey.Value) +'\"}"'
@@ -355,11 +333,9 @@ stages:
                     $parameterObjects += @{
                       windowsScriptExtensionCommandToExecute = $windowsScriptExtensionCommandToExecute
                     }
-
                     $functionInput += @{
                       optionalParameters = $parameterObjects
                     }
-
                     Invoke-GeneralDeployment @functionInput -Verbose
                   errorActionPreference: stop
                   azurePowerShellVersion: OtherVersion
@@ -388,7 +364,6 @@ stages:
                   inline: |
                     Write-Verbose "Load function" -Verbose
                     . '$(Build.Repository.LocalPath)/$(orchestrationFunctionsPath)/Invoke-GeneralDeployment.ps1'
-
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvdworkspace.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
@@ -397,10 +372,8 @@ stages:
                       moduleVersion                 = "0.0.1"
                       parameterFilePath             = $parameterFilePath
                     }
-
                     Write-Verbose "Invoke task with" -Verbose
                     $functionInput.Keys | ForEach-Object { Write-Verbose ("PARAMETER: `t'{0}' with value '{1}'" -f $_, $functionInput[$_]) -Verbose }
-
                     Invoke-GeneralDeployment @functionInput -Verbose
                   errorActionPreference: stop
                   azurePowerShellVersion: OtherVersion
@@ -442,12 +415,10 @@ stages:
 
                     Write-Verbose "Invoke task with" -Verbose
                     $functionInput.Keys | ForEach-Object { Write-Verbose ("PARAMETER: `t'{0}' with value '{1}'" -f $_, $functionInput[$_]) -Verbose }
-
                     Invoke-GeneralDeployment @functionInput -Verbose
                   errorActionPreference: stop
                   azurePowerShellVersion: LatestVersion
                 enabled: true
-
   - deployment: Deploy_Application
     dependsOn:
     - Deploy_WVDSessionHosts
@@ -471,7 +442,6 @@ stages:
                   inline: |
                     Write-Verbose "Load function" -Verbose
                     . '$(Build.Repository.LocalPath)/$(orchestrationFunctionsPath)/Invoke-GeneralDeployment.ps1'
-
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvdapplication.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
@@ -480,7 +450,6 @@ stages:
                       moduleVersion                 = "2020-06-02"
                       parameterFilePath             = $parameterFilePath
                     }
-
                     Write-Verbose "Invoke task with" -Verbose
                     $functionInput.Keys | ForEach-Object { Write-Verbose ("PARAMETER: `t'{0}' with value '{1}'" -f $_, $functionInput[$_]) -Verbose }
 

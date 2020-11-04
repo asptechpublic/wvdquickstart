@@ -1,5 +1,4 @@
 <#
-
 .DESCRIPTION
 This script is ran by the inputValidationRunbook and validates the following:
  * Azure admin credentials and owner & company administrator role
@@ -8,7 +7,6 @@ This script is ran by the inputValidationRunbook and validates the following:
  * If the VNet and the SubNet can be found
  * If the firewall allows the required URLs to be accessed
 Additionally, this script assigns the subscription Contributor role to the WVDServicePrincipal MSI
-
 #>
 
 #Initializing variables from automation account

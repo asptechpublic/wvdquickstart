@@ -204,7 +204,7 @@ stages:
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvdhostpool.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
-                      location                      = "$(location)"
+                      location                      = "$(location2)"
                       moduleName                    = "WvdHostPools"
                       moduleVersion                 = "0.0.1"
                       parameterFilePath             = $parameterFilePath
@@ -242,7 +242,7 @@ stages:
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvddesktoppapplicationgroup.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
-                      location                      = "$(location)"
+                      location                      = "$(location2)"
                       moduleName                    = "WvdApplicationGroups"
                       moduleVersion                 = "2020-06-02"
                       parameterFilePath             = $parameterFilePath
@@ -367,7 +367,7 @@ stages:
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvdworkspace.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
-                      location                      = "$(location)"
+                      location                      = "$(location2)"
                       moduleName                    = "WvdWorkspaces"
                       moduleVersion                 = "0.0.1"
                       parameterFilePath             = $parameterFilePath
@@ -407,7 +407,7 @@ stages:
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvdapplicationgroup01.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
-                      location                      = "$(location)"
+                      location                      = "$(location2)"
                       moduleName                    = "WvdApplicationGroups"
                       moduleVersion                 = "2020-06-02"
                       parameterFilePath             = $parameterFilePath
@@ -445,7 +445,7 @@ stages:
                     $parameterFilePath = '$(Pipeline.Workspace)/parameters/wvdapplication.parameters.json'
                     $functionInput = @{
                       resourcegroupName             = "$(resourceGroupName)"
-                      location                      = "$(location)"
+                      location                      = "$(location2)"
                       moduleName                    = "WvdApplications"
                       moduleVersion                 = "2020-06-02"
                       parameterFilePath             = $parameterFilePath

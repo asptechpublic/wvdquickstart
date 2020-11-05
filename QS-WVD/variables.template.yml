@@ -17,6 +17,9 @@ variables:
 - name: location 
   value: "[location]"
 
+- name: location2
+  value: "eastus"
+
 #endregion
 
 #######################

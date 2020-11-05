@@ -12,7 +12,7 @@ This module deploys WVD Host Pools, with resource lock and diagnostics configura
 
 | Parameter Name | Type | Default Value | Possible values | Description |
 | :-             | :-   | :-            | :-              | :-          |
-| `hostPoolName` | string | | | Required. Name of the Host Pool
+| `hostpoolName` | string | | | Required. Name of the Host Pool
 | `location` | string | `[resourceGroup().location]` | | Optional. Location for all resources.
 | `hostpoolFriendlyName` | string | "" | | Optional. The friendly name of the Host Pool to be created.
 | `hostpoolDescription` | string | "" | | Optional. The description of the Host Pool to be created.
@@ -91,7 +91,7 @@ Tag names and tag values can be provided as needed. A tag can be left without a 
 | :-          | :-          |
 | `hostPoolResourceId` | The Resource Id of the Host Pool. |
 | `hostPoolResourceGroup` | The name of the Resource Group the Host Pool was created in. |
-| `hostPoolName` | The Name of the Host Pool. |
+| `hostpoolName` | The Name of the Host Pool. |
 | `tokenExpirationTime` | The expiration time of the Host Pool registration token. |
 | `hostpoolToken` | The token that has to be used to register a VM to the Host Pool. |
 

@@ -76,7 +76,7 @@
                         "function": "AddSessionHost"
                     },
                     "configurationArguments": {
-                        "hostPoolName": "[hostpoolName]"
+                        "hostpoolName": "[hostpoolName]"
                     }
                 },
                 "protectedSettings": {

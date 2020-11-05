@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "hostPoolName": {
+        "hostpoolName": {
             "type": "string",
             "minLength": 1,
             "metadata": {
@@ -234,7 +234,7 @@
         {
             "type": "Microsoft.DesktopVirtualization/hostpools",
             "apiVersion": "2019-12-10-preview",
-            "name": "[parameters('hostPoolName')]",
+            "name": "[parameters('hostpoolName')]",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
             "properties": {
@@ -261,7 +261,7 @@
                     "condition": "[parameters('lockForDeletion')]",
                     "name": "Microsoft.Authorization/hostPoolDoNotDelete",
                     "dependsOn": [
-                        "[concat('Microsoft.DesktopVirtualization/hostpools/', parameters('hostPoolName'))]"
+                        "[concat('Microsoft.DesktopVirtualization/hostpools/', parameters('hostpoolName'))]"
                     ],
                     "comments": "Resource lock on Host Pool",
                     "properties": {
@@ -271,11 +271,11 @@
                 {
                     "type": "Microsoft.DesktopVirtualization/hostpools/providers/diagnosticsettings",
                     "apiVersion": "2017-05-01-preview",
-                    "name": "[concat(parameters('hostPoolName'), '/Microsoft.Insights/service')]",
+                    "name": "[concat(parameters('hostpoolName'), '/Microsoft.Insights/service')]",
                     "location": "[parameters('location')]",
                     "condition": "[or(not(empty(parameters('diagnosticStorageAccountId'))),not(empty(parameters('workspaceId'))),not(empty(parameters('eventHubAuthorizationRuleId'))),not(empty(parameters('eventHubName'))))]",
                     "dependsOn": [
-                        "[concat('Microsoft.DesktopVirtualization/hostpools/', parameters('hostPoolName'))]"
+                        "[concat('Microsoft.DesktopVirtualization/hostpools/', parameters('hostpoolName'))]"
                     ],
                     "properties": {
                         "storageAccountId": "[if(empty(parameters('diagnosticStorageAccountId')), json('null'), parameters('diagnosticStorageAccountId'))]",
@@ -294,7 +294,7 @@
     "outputs": {
         "hostPoolResourceId": {
             "type": "string",
-            "value": "[resourceId('Microsoft.DesktopVirtualization/hostpools', parameters('hostPoolName'))]",
+            "value": "[resourceId('Microsoft.DesktopVirtualization/hostpools', parameters('hostpoolName'))]",
             "metadata": {
                 "description": "The Resource Id of the Host Pool."
             }
@@ -306,9 +306,9 @@
                 "description": "The name of the Resource Group the Host Pool was created in."
             }
         },
-        "hostPoolName": {
+        "hostpoolName": {
             "type": "string",
-            "value": "[parameters('hostPoolName')]",
+            "value": "[parameters('hostpoolName')]",
             "metadata": {
                 "description": "The Name of the Host Pool."
             }

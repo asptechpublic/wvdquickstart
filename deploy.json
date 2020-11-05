@@ -82,13 +82,6 @@
             },
             "defaultValue": ""
         },
-        "hostpoolName": {
-            "type": "string",
-            "metadata": { 
-                "description": "Name for the WVD Hostpool"
-            },
-            "defaultValue": "[concat(parameters('customerID'), '-Pool') ]"
-        },
         "vmNameprefix": {
             "type": "string",
             "metadata": {
@@ -184,10 +177,8 @@
                 "name": "vmSize",
                 "value": "[concat('\"',parameters('vmSize'),'\"')]"
             },
-            {
-                "name": "hostpoolName",
-                "value": "[concat('\"',parameters('hostpoolName'),'\"')]"
-            },
+            
+             
             {
                 "name": "vmNameprefix",
                 "value": "[concat('\"',parameters('vmNameprefix'),'\"')]"

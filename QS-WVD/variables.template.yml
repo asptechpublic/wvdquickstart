@@ -17,8 +17,6 @@ variables:
 - name: location 
   value: "[location]"
 
-- name: location2
-  value: "eastus"
 
 #endregion
 
@@ -79,8 +77,8 @@ variables:
 - name: version
   value: "latest"
 
-- name: HostPoolName
-  value: "QS-WVD-HP"
+- name: hostpoolName
+  value: "[hostpoolName]"
   
 - name: profilesStorageAccountName
   value: "[profilesStorageAccountName]"

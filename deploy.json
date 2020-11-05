@@ -94,7 +94,7 @@
             "metadata": {
                 "description": "Name prefix for the session hosts"
             },
-            "defaultValue": "[concat(parameters('customerID'), '-WVD') ]"
+            "defaultValue": "[concat(parameters('customerID'), 'WVD') ]"
         },
         "vmSize": {
             "type": "string",

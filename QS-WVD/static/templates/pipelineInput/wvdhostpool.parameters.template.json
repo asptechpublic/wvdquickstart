@@ -6,7 +6,7 @@
             "value": "[hostpoolName]"
         },
         "location": {
-            "value": "[location]"
+            "value": "eastus"
         },
         "hostpoolFriendlyName": {
             "value": ""

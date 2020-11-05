@@ -6,7 +6,7 @@
             "value": "[appGroupName]"
         },
         "location": {
-            "value": "[location]"
+            "value": "eastus"
         },
         "appGroupType": {
             "value": "RemoteApp"

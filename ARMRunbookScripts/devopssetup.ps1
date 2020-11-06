@@ -337,8 +337,31 @@ $parameters = $parameters.Replace("[appGroupname]", "'" + $appGroupname + "'")
 $parameters = $parameters.Replace("[deskGroupname]", "'" + $deskGroupname + "'")
 $parameters = $parameters.Replace("[workSpacename]", "'" + $workSpacename + "'")
 $parameters = $parameters.Replace("[vmNumberofinstances]", $vmNumberofinstances)
+
+
+
 $parameters = $parameters.Replace("[vmSize]", "'" + $vmSize + "'")
 $parameters = $parameters.Replace("[vmNameprefix]",  "'" + $vmNameprefix + "'") 
+$parameters = $parameters.Replace("adminPassword", "'" + "adminPassword")
+$parameters = $parameters.Replace("Standard_LRS", "'" + "Standard_LRS")
+$parameters = $parameters.Replace("wvdprofiles", "'" + "wvdprofiles")
+$parameters = $parameters.Replace("Pooled", "'" + "Pooled")
+$parameters = $parameters.Replace("WVDPOOL", "'" + "WVDPOOL")
+$parameters = $parameters.Replace("BreadthFirst", "'" + "BreadthFirst")
+$parameters = $parameters.Replace("Premium_LRS", "'" + "Premium_LRS")
+$parameters = $parameters.Replace("WVD Workspace", "'" + "WVD Workspace")
+$parameters = $parameters.Replace("QS-WVD-IMG-RG", "'" + "QS-WVD-IMG-RG")
+$parameters = $parameters.Replace("QS-WVD-ImageTemplate", "'" + "QS-WVD-ImageTemplate")
+$parameters = $parameters.Replace("<sigImageDefinitionId>", "'" + "<sigImageDefinitionId>")
+$parameters = $parameters.Replace("W10-20H1-O365", "'" + "W10-20H1-O365")
+$parameters = $parameters.Replace("Windows", "'" + "Windows")
+$parameters = $parameters.Replace("microsoftwindowsdesktop", "'" + "microsoftwindowsdesktop")
+$parameters = $parameters.Replace("office-365", "'" + "office-365")
+$parameters = $parameters.Replace("20h1-evd-o365pp", "'" + "20h1-evd-o365pp")
+$parameters = $parameters.Replace("latest", "'" + "latest")
+
+
+
 $parameters = $parameters.Replace('"', " ")
 
 

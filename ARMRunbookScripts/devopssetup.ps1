@@ -18,7 +18,7 @@ This script is ran by the devOpsSetupRunbook and it does the following, in the o
 
 #Initializing variables from automation account
 
-$hostpoolName = Get-AutomationVariable -Name 'hostpoolName'
+#$hostpoolName = Get-AutomationVariable -Name 'hostpoolName'
 $appGroupname = Get-AutomationVariable -Name 'appGroupname'
 $deskGroupname = Get-AutomationVariable -Name 'deskGroupname'
 $workSpacename = Get-AutomationVariable -Name 'workSpacename'
@@ -336,7 +336,7 @@ $parameters = $parameters.Replace("[hostpoolName]", $hostpoolName)
 $parameters = $parameters.Replace("[appGroupname]", $appGroupname)
 $parameters = $parameters.Replace("[deskGroupname]", $deskGroupname)
 $parameters = $parameters.Replace("[workSpacename]", $workSpacename)
-$parameters = $parameters.Replace("[vmNumberofinstances]", $vmNumberofinstances),
+$parameters = $parameters.Replace("[vmNumberofinstances]", $vmNumberofinstances)
 $parameters = $parameters.Replace("[vmSize]", $vmSize)
 $parameters = $parameters.Replace("[vmNameprefix]", $vmNameprefix)
 

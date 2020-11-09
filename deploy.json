@@ -97,8 +97,10 @@
             "defaultValue": "Standard_E8as_v4",
             "allowedValues": ["Standard_E8as_v4", "Standard_E4as_v4", "Standard_E16as_v4" ]
         },
-        "vmNumberofinstances": {
+        "vmnumber": {
             "type": "int",
+            "minValue": 1,
+            "maxValue": 800,
             "metadata": {
                 "description": "Number of session hosts to be deployed"
             },
@@ -170,8 +172,8 @@
                 "value": "[concat('\"',parameters('workSpacename'),'\"')]"
             },
             {
-                "name": "vmNumberofinstances",
-                "value": "[concat('\"',parameters('vmNumberofinstances'),'\"')]"
+                "name": "vmnumber",
+                "value": "[concat('\"',parameters('vmnumber'),'\"')]"
             },
             {
                 "name": "vmSize",

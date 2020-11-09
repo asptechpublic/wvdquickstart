@@ -33,7 +33,7 @@
     loadBalancerType                      = "BreadthFirst"                      # Load-balancing algorithm
     vmNamePrefix                          = "[vmNameprefix]"                    # Prefix for the WVD VMs that will be deployed
     vmSize                                = "[vmSize]"                          # The VM SKU
-    vmnumber                   = "[vmnumber]"                                 # Number of VMs to be deployed
+    vmnumber                              = "[vmnumber]"                                 # Number of VMs to be deployed
     vmInitialNumber                       = 1                                   # default
     diskSizeGB                            = 128                                 # Size of the VMs' disk
     vmDiskType                            = "Premium_LRS"                       # SKU of the above disk

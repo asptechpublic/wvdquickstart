@@ -22,7 +22,7 @@ This script is ran by the devOpsSetupRunbook and it does the following, in the o
 $appGroupname = Get-AutomationVariable -Name 'appGroupname'
 $deskGroupname = Get-AutomationVariable -Name 'deskGroupname'
 $workSpacename = Get-AutomationVariable -Name 'workSpacename'
-$vmNumberofinstances = Get-AutomationVariable -Name 'vmNumberofinstances'
+$vmnumber = Get-AutomationVariable -Name 'vmnumber'
 $vmSize = Get-AutomationVariable -Name 'vmSize'
 $vmNameprefix = Get-AutomationVariable -Name 'vmNameprefix'
 $SubscriptionId = Get-AutomationVariable -Name 'subscriptionid'
@@ -336,7 +336,7 @@ $parameters = $parameters.Replace("[hostpoolName]", "'" + $hostpoolName + "'")
 $parameters = $parameters.Replace("[appGroupname]", "'" + $appGroupname + "'") 
 $parameters = $parameters.Replace("[deskGroupname]", "'" + $deskGroupname + "'")
 $parameters = $parameters.Replace("[workSpacename]", "'" + $workSpacename + "'")
-$parameters = $parameters.Replace("[vmNumberofinstances]", $vmNumberofinstances)
+$parameters = $parameters.Replace("[vmnumber]", $vmnumber)
 
 
 

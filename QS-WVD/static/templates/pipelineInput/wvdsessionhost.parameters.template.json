@@ -6,8 +6,7 @@
             "value": "[vmNamePrefix]"
         },
         "vmNumberOfInstances": {
-
-            "value": "[vmNumberofinstances]"
+            "value": "[vmnumber]"
         },
         "vmInitialNumber": {
             "value": 1

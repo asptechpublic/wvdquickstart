@@ -21,10 +21,10 @@ This module deploys one or multiple Virtual Machines.
 
 | Parameter Name| Type| Default Value| Possible values| Description |
 | :-- | :-- | :-- | :-- | :-- |
-| `vmNames` | array || | Optional. Name(s) of the virtual machine(s). If no explicit names are provided, VM name(s) will be generated based on the vmNamePrefix, vmNumberOfInstances and vmInitialNumber parameters.|
-| `vmNamePrefix`| string| `[take(toLower(uniqueString(resourceGroup().name)),10)]` | | Optional. If no explicit values were provided in the vmNames parameter, this prefix will be used in combination with the vmNumberOfInstances and the vmInitialNumber parameters to create unique VM names. You should use a unique prefix to reduce name collisions in Active Directory. If no value is provided, a 10 character long unique string will be generated based on the Resource Group's name. |
-| `vmNumberOfInstances`| int | 1| 1-800 | Optional. If no explicit values were provided in the vmNames parameter, this parameter will be used to generate VM names, using the vmNamePrefix and the vmInitialNumber values.|
-| `vmInitialNumber` | int | 1| | Optional. If no explicit values were provided in the vmNames parameter, this parameter will be used to generate VM names, using the vmNamePrefix and the vmNumberOfInstances values.|
+| `vmNames` | array || | Optional. Name(s) of the virtual machine(s). If no explicit names are provided, VM name(s) will be generated based on the vmNamePrefix, vmnumber and vmInitialNumber parameters.|
+| `vmNamePrefix`| string| `[take(toLower(uniqueString(resourceGroup().name)),10)]` | | Optional. If no explicit values were provided in the vmNames parameter, this prefix will be used in combination with the vmnumber and the vmInitialNumber parameters to create unique VM names. You should use a unique prefix to reduce name collisions in Active Directory. If no value is provided, a 10 character long unique string will be generated based on the Resource Group's name. |
+| `vmnumber`| int | 1| 1-800 | Optional. If no explicit values were provided in the vmNames parameter, this parameter will be used to generate VM names, using the vmNamePrefix and the vmInitialNumber values.|
+| `vmInitialNumber` | int | 1| | Optional. If no explicit values were provided in the vmNames parameter, this parameter will be used to generate VM names, using the vmNamePrefix and the vmnumber values.|
 | `location`| string| `[resourceGroup().location]`| | Optional. Location for all resources.|
 | `vmSize`| string| `Standard_D2s_v3` | | Optional. Specifies the size for the VMs. |
 | `imageReference`| object| {} | Complex structure, see below.| Optional. OS image reference. In case of marketplace images, it's the combination of the publisher, offer, sku, version attributes. In case of custom images it's the resource ID of the custom image. |

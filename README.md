@@ -8,6 +8,7 @@ Deploy Azure resources needed to configure an Azure DevOps pipeline.
 </a><br>
 
 
+
 Once the deployment completes, please navigate to https://dev.azure.com, where you will find the WVD QuickStart project. Navigate to the "pipelines" section - Here you'll find a running pipeline that deploys a WVD environment (VMs, host pool, desktop app group, FSLogix configuration) for you. Upon completion of this pipeline, which will take about 15 minutes, the WVD environment is ready for use.
 
 The QuickStart creates a test user for you to try out the environment. Navigate to https://rdweb.wvd.microsoft.com/arm/webclient/index.html and login with the following test user credentials:

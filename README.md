@@ -3,7 +3,7 @@
 Deploy Azure resources needed to configure an Azure DevOps pipeline.
 
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fasptechcloud%2Fwvdquickstart%2Fmaster%2Fdeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fasptechpublic%2Fwvdquickstart%2Fmaster%2Fdeploy.json" target="_blank">
     <img src="https://aka.ms/deploytoazurebutton"/>
 </a><br>
 

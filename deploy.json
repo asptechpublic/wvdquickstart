@@ -127,6 +127,13 @@
             },
             "defaultValue": "[concat(parameters('customerID'), '-WS')]"
         },
+        "image" : {
+            "type": "string",
+            "metadata": {
+                "description": "define the custom image location, this needs to be in the format'/subscriptions/<subscriptionId>/resourceGroups/<image-resource-group-name>/providers/Microsoft.Compute/galleries/<SIG name>/images/<image name>/versions/<version>'  "
+            },
+            "defaultValue": "' '"
+        },
 
         "utcValue": {
             "type": "string",
@@ -163,6 +170,11 @@
                 "name": "appGroupname",
                 "value": "[concat('\"',parameters('appGroupname'),'\"')]"
             },
+            {
+            "name": "image",
+                "value": "[concat('\"',parameters('image'),'\"')]"
+            },
+
             {
                 "name": "deskGroupname",
                 "value": "[concat('\"',parameters('deskGroupname'),'\"')]"

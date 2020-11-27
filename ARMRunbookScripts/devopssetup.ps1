@@ -19,6 +19,7 @@ This script is ran by the devOpsSetupRunbook and it does the following, in the o
 #Initializing variables from automation account
 
 #$hostpoolName = Get-AutomationVariable -Name 'hostpoolName'
+$image = Get-AutomationVariable -Name 'image'
 $appGroupname = Get-AutomationVariable -Name 'appGroupname'
 $deskGroupname = Get-AutomationVariable -Name 'deskGroupname'
 $workSpacename = Get-AutomationVariable -Name 'workSpacename'
@@ -305,6 +306,7 @@ $content = $content.Replace("[resourceGroupName]", $ResourceGroupName)
 $content = $content.Replace("[profilesStorageAccountName]", $profilesStorageAccountName)
 $content = $content.Replace("[autoAccountName]", $AutomationAccountName)
 $content = $content.Replace("[identityApproach]", $identityApproach)
+$content = $content.Replace("[image]", $image)
 $content = $content.Replace('"', '')
 write-output $content
 

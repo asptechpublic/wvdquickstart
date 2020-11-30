@@ -276,10 +276,10 @@ stages:
                   }
                 displayName: 'Install required module'
               - task: AzurePowerShell@4
-                displayName: 'Deploy module [VirtualMachines] in [$(resourceGroupName)] via [$(serviceConnection)]'
+                displayName: 'Deploy module [VirtualMachines] in [$(resourceGroupName)] via [$(aspsig)]'
                 name: Deploy_SessionHosts_Task
                 inputs:
-                  azureSubscription: $(serviceConnection)
+                  azureSubscription: $(aspsig)
                   ScriptType: InlineScript
                   inline: |
                     Write-Verbose "Load function" -Verbose

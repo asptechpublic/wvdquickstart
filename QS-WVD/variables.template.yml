@@ -14,8 +14,6 @@ variables:
 - name: serviceConnection # Name of the service connection between the Azure subscription and DevOps
   value: "WVDServiceConnection"
 
-- name: aspsig # Name of the service connection between the Azure subscription and DevOps
-  value: "aspsig"
 
 - name: location 
   value: "[location]"

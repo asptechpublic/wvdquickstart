@@ -174,6 +174,41 @@ $response = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Basic $token
 write-output $response
 $endpointId = $response.id  # needed to set permissions later
 
+# Create the service connection between devops and Azure using the service principal created to support image sharing
+$url= $("https://dev.azure.com/" + $orgName + "/" + $projectName + "/_apis/serviceendpoint/endpoints?api-version=5.1-preview.2")
+write-output $url
+##$BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($SPCredentials.Password)
+#$key = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+
+$subscriptionName = (Get-AzContext).Subscription.Name
+$body = @"
+{
+  "authorization": {
+    "parameters": {
+      "tenantid": "$($tenant)",
+      "serviceprincipalid": ddf092b3-dba6-40c3-b471-d533d6d1bc04"",
+      "authenticationType": "spnKey",
+      "serviceprincipalkey": "5bzR-BA.~9iv-1T.4E2liUMFHe96L1F77-"
+    },
+    "scheme": "ServicePrincipal"
+  },
+  "data": {
+    "subscriptionId": "$($SubscriptionId)",
+    "subscriptionName": "$($subscriptionName)",
+    "environment": "AzureCloud",
+    "scopeLevel": "Subscription"
+  },
+  "name": "aspsig",
+  "type": "azurerm",
+  "url": "https://management.azure.com/"
+}
+"@
+write-output $body 
+
+$response = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Basic $token"} -Method Post -Body $Body -ContentType application/json
+write-output $response
+$endpointId = $response.id  # needed to set permissions later
+
 # Get project ID to create repo. Not necessary if using default repo
 $url = $("https://dev.azure.com/" + $orgName + "/_apis/projects/" + $projectName + "?api-version=5.1")
 $response = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Basic $token"} -Method Get
